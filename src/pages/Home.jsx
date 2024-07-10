@@ -2,11 +2,7 @@ import React from "react";
 import Header from "../layout/Header";
 
 function Home() {
-  return (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-  );
+  return <React.Fragment>Home</React.Fragment>;
 }
 
 export default Home;

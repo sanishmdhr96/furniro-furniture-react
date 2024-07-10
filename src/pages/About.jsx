@@ -1,7 +1,8 @@
 import React from "react";
+import Header from "../layout/Header";
 
 function About() {
-  return <div>About</div>;
+  return <React.Fragment>About</React.Fragment>;
 }
 
 export default About;
