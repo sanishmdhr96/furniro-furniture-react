@@ -13,7 +13,7 @@ function Header() {
     <React.Fragment>
       <header>
         {/* Add Logo for the website  */}
-        <img src={Logo} alt="Logo" class="logo" />
+        <img src={Logo} alt="Logo" className="logo" />
         {/* Add Nav Links for the website  */}
         <nav>
           <a href="/">Home</a>
@@ -22,7 +22,7 @@ function Header() {
           <a href="/contact.html">Contact</a>
         </nav>
         {/* Add CTAs  */}
-        <div class="cta">
+        <div className="cta">
           <img src={AlertIcon} alt="Account Alert" />
           <img src={SearchIcon} alt="Search Icon" />
           <img src={FavIcon} alt="Fav" />
