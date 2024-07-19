@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "./Header";
+import AppContextProvider from "../context";
 
 function Layout({ children }) {
   return (
-    <div>
+    <AppContextProvider>
       <Header />
       {children}
       Footer
-    </div>
+    </AppContextProvider>
   );
 }
 
