@@ -1,17 +1,93 @@
+@import './colors.scss';
+
 .products {
     display: flex;
     flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    cursor: pointer;
 
     .product--item {
         width: 285px;
         height: 446px;
+        overflow: hidden;
+        position: relative;
 
         .image-container {
             height: 301px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             img {
+                width: 80%;
+                height: 80%;
+            }
+        }
+
+        .product-description {
+            background: #F4F5F7;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            h3 {
                 width: 100%;
-                height: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+
+            .text--subtitle {
+                color: $text-color-1;
+            }
+        }
+
+
+
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba($color: $text-color-1, $alpha: 0.7);
+            transition: top 0.2s ease;
+            display: flex;
+            align-items: center;
+
+            .action-container {
+                display: none;
+
+                button {
+                    opacity: 1;
+                }
+
+                .share-options {
+                    display: flex;
+                    gap: 20px;
+                    justify-content: center;
+                    list-style: none;
+                    color: white;
+                    margin-top: 24px;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+                }
+            }
+        }
+
+        &:hover {
+            .product-overlay {
+                top: 0;
+
+                .action-container {
+                    display: block;
+                }
             }
         }
     }

@@ -11,7 +11,7 @@ const AppContextProvider = (props) => {
 
   async function fetchProducts() {
     try {
-      const data = await fetch("https://fakestoreapi.com/products");
+      const data = await fetch("https://fakestoreapi.com/products?limit=16");
       const response = await data.json();
       console.log(response);
       if (response?.length > 0) {
