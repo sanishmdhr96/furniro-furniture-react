@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Container from "../../layout/Container";
 import SectionTitle from "../../layout/SectionTitle";
 import { AppContext } from "../../context";
@@ -6,7 +6,7 @@ import { AppContext } from "../../context";
 import "../../styles/product.scss";
 
 import { useEffectOnce } from "../../lib/useEffectOnce";
-import ProductItem from "../Products/ProductItem";
+import ProductItem from "../common/products/ProductItem";
 
 function ProductsSection() {
   const { products, fetchProductsList } = useContext(AppContext);

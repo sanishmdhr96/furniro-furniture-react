@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../ui/icons";
+import Icon from "../../ui/icons";
 
 function ProductItem({ imgUrl, title, category, price }) {
   return (
