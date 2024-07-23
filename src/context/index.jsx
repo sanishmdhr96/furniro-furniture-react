@@ -5,8 +5,10 @@ export const AppContext = createContext("");
 const AppContextProvider = (props) => {
   const [products, setProducts] = useState([]);
 
+  const [username, setUsername] = useState("");
   const state = {
     products,
+    username,
   };
 
   async function fetchProducts() {
@@ -20,11 +22,16 @@ const AppContextProvider = (props) => {
     } catch (e) {}
   }
 
+  const addUsername = () => {
+    setUsername("Manish");
+  };
+  s;
   return (
     <AppContext.Provider
       value={{
         ...state,
         fetchProductsList: fetchProducts,
+        addUsername: addUsername,
       }}
     >
       {/* APP */}

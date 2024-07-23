@@ -1,6 +1,7 @@
 import * as ACTIONS from "./action";
 
 export const fetchProductList = () => {
+    console.log('function dispatch')
     return (dispatch) => {
         dispatch(ACTIONS.fetchProductsRequest());
 
