@@ -17,9 +17,9 @@ function Header() {
         {/* Add Nav Links for the website  */}
         <nav>
           <a href="/">Home</a>
-          <a href="shop.html">Shop</a>
+          <a href="/shop">Shop</a>
           <a href="#">About</a>
-          <a href="/contact.html">Contact</a>
+          <a href="/contact">Contact</a>
         </nav>
         {/* Add CTAs  */}
         <div className="cta">

@@ -20,6 +20,13 @@ const AppContextProvider = (props) => {
     } catch (e) {}
   }
 
+<<<<<<< Updated upstream
+=======
+  const addUsername = () => {
+    setUsername("Manish");
+  };
+
+>>>>>>> Stashed changes
   return (
     <AppContext.Provider
       value={{
