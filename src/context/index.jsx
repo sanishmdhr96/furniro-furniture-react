@@ -5,8 +5,10 @@ export const AppContext = createContext("");
 const AppContextProvider = (props) => {
   const [products, setProducts] = useState([]);
 
+  const [username, setUsername] = useState("");
   const state = {
     products,
+    username,
   };
 
   async function fetchProducts() {
@@ -20,18 +22,16 @@ const AppContextProvider = (props) => {
     } catch (e) {}
   }
 
-<<<<<<< Updated upstream
-=======
   const addUsername = () => {
     setUsername("Manish");
   };
 
->>>>>>> Stashed changes
   return (
     <AppContext.Provider
       value={{
         ...state,
         fetchProductsList: fetchProducts,
+        addUsername: addUsername,
       }}
     >
       {/* APP */}
