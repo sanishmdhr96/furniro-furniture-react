@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Container from "../../layout/Container";
 import SectionTitle from "../../layout/SectionTitle";
 import { AppContext } from "../../context";
@@ -11,7 +11,8 @@ import ProductItem from "../common/products/ProductItem";
 import { fetchProductList } from "../../duck/products/service";
 import ContentLoader from "react-content-loader";
 
-function ProductsSection() {
+function ProductsSection({ limit = 16 }) {
+  console.log("limit product", limit);
   const dispatch = useDispatch();
 
   const { products, productsLoading } = useSelector((state) => {
@@ -21,9 +22,13 @@ function ProductsSection() {
     };
   });
 
-  useEffectOnce(() => {
-    dispatch(fetchProductList());
-  }, []);
+  // useEffectOnce(() => {
+  //   console.log("useeffect 12", limit);
+  // }, [limit]);
+
+  useEffect(() => {
+    dispatch(fetchProductList({ limit }));
+  }, [limit]);
   return (
     <section>
       <Container>
