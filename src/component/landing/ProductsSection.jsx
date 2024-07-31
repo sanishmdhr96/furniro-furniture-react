@@ -50,6 +50,7 @@ function ProductsSection({ limit = 16 }) {
             products?.map((item) => (
               <ProductItem
                 key={item?.id}
+                id={item?.id}
                 title={item?.title}
                 price={item?.price}
                 imgUrl={item?.image}

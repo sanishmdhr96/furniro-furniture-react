@@ -31,5 +31,23 @@ header {
         }
     }
 
+    .cart-link {
+        position: relative;
+
+        span {
+            position: absolute;
+            font-size: 11px;
+            height: 16px;
+            width: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #959090;
+            color: white;
+            top: -5px;
+            right: 0px;
+        }
+    }
 
 }

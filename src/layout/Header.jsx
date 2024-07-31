@@ -11,6 +11,7 @@ import { useEffectOnce } from "../lib/useEffectOnce";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsername } from "../duck/users/service";
 import { AppContext } from "../context";
+import { Link } from "react-router-dom";
 
 function Header() {
   // const dispatch = useDispatch();
@@ -21,11 +22,9 @@ function Header() {
   // useEffectOnce(() => {
   //   dispatch(fetchUsername());
   // }, []);
-  const { username, addUsername } = useContext(AppContext);
 
-  useEffectOnce(() => {
-    addUsername();
-  }, []);
+  const { cartData } = useContext(AppContext);
+
   return (
     <React.Fragment>
       <header>
@@ -43,9 +42,10 @@ function Header() {
           <img src={AlertIcon} alt="Account Alert" />
           <img src={SearchIcon} alt="Search Icon" />
           <img src={FavIcon} alt="Fav" />
-          <img src={CartIcon} alt="Cart" />
+          <Link to={"/cart"} className="cart-link">
+            <img src={CartIcon} alt="Cart" /> <span>{cartData?.length}</span>
+          </Link>
         </div>
-        <p>Hi {username}</p>
       </header>
     </React.Fragment>
   );

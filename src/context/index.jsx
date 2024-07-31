@@ -3,35 +3,37 @@ import { createContext, useState } from "react";
 export const AppContext = createContext("");
 
 const AppContextProvider = (props) => {
-  const [products, setProducts] = useState([]);
+  const [cartData, setCartData] = useState([]);
 
-  const [username, setUsername] = useState("");
   const state = {
-    products,
-    username,
+    cartData,
   };
 
-  async function fetchProducts() {
-    try {
-      const data = await fetch("https://fakestoreapi.com/products?limit=16");
-      const response = await data.json();
-      console.log(response);
-      if (response?.length > 0) {
-        setProducts((prevState) => [...prevState, ...response]);
-      }
-    } catch (e) {}
-  }
-
-  const addUsername = () => {
-    setUsername("Manish");
+  const setDataToCart = (value) => {
+    const productItem = cartData?.findIndex((item) => item?.id === value?.id);
+    // [sad,dasda,] -> 3
+    if (productItem > -1) {
+      const updatePayload = {
+        ...cartData[productItem],
+        quantity: cartData[productItem]?.quantity + 1,
+        subTotal: cartData[productItem]?.subTotal + value?.price,
+      };
+      cartData?.splice(productItem, 1, updatePayload);
+    } else {
+      const payload = {
+        ...value,
+        quantity: 1,
+        subTotal: value?.price,
+      };
+      setCartData((prevState) => [...prevState, payload]);
+    }
   };
 
   return (
     <AppContext.Provider
       value={{
         ...state,
-        fetchProductsList: fetchProducts,
-        addUsername: addUsername,
+        setDataToCart: setDataToCart,
       }}
     >
       {/* APP */}
