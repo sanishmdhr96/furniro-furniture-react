@@ -1,5 +1,5 @@
 
-import Logo from "./logo.png";
+import Logo from "./logo.webp";
 
 import Cart from "./icons/cart.png";
 import Profile from "./icons/Profile.png";
@@ -24,7 +24,7 @@ const Images = {
 }
 
 const Icons = {
-    Cart, Profile, Wishlist, Search, 
+    Cart, Profile, Wishlist, Search,
     Clock, Map, Phone,
     Grid, List, Filtering
 }

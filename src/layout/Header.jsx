@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import "../styles/layout/header.scss";
 
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo.webp";
 import FavIcon from "../assets/icons/akar-icons_heart.png";
 import SearchIcon from "../assets/icons/akar-icons_search.png";
 import AlertIcon from "../assets/icons/mdi_account-alert-outline.png";

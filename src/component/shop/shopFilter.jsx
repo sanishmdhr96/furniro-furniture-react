@@ -3,6 +3,7 @@ import { Icons } from "../../assets";
 
 import "../../styles/shop.scss";
 import { useSelector } from "react-redux";
+import SubHeroSection from "../common/SubHeroSection";
 
 function ShopFilter(props) {
   const { setLimit, limit } = props;
@@ -22,12 +23,7 @@ function ShopFilter(props) {
 
   return (
     <React.Fragment>
-      <div className="bg-container">
-        <h1>Shop</h1>
-        <div className="breadcrumb">
-          <span>Home</span> &gt; <span>Shop</span>
-        </div>
-      </div>
+      <SubHeroSection module={"Shop"} />
 
       <div class="filterItems">
         <div className="filter-icons">

@@ -4,9 +4,14 @@ export const AppContext = createContext("");
 
 const AppContextProvider = (props) => {
   const [cartData, setCartData] = useState([]);
+  const [total, setTotal] = useState({
+    subTotal: 0,
+    total: 0,
+  });
 
   const state = {
     cartData,
+    total,
   };
 
   const setDataToCart = (value) => {
@@ -27,6 +32,10 @@ const AppContextProvider = (props) => {
       };
       setCartData((prevState) => [...prevState, payload]);
     }
+    setTotal((prevState) => ({
+      subTotal: prevState?.subTotal + value?.price,
+      total: prevState?.total + value?.price,
+    }));
   };
 
   return (
