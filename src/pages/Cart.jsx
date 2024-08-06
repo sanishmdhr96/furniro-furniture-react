@@ -1,13 +1,45 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import "../styles/cart.scss";
 
 import { AppContext } from "../context";
 import SubHeroSection from "../component/common/SubHeroSection";
 import Container from "../layout/Container";
+import { CardElement } from "@stripe/react-stripe-js";
+
+import axios from "../axios";
 
 function Cart() {
   const { cartData, total } = useContext(AppContext);
+
+  const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [clientSecret, setClientSecret] = useState(false);
+
+  const handleFormSubmit = (event) => {};
+
+  // detect changes in the card form
+  const handleChange = (event) => {
+    console.log(event);
+  };
+
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: "POST",
+        url: `/payments/create?total=${total?.total * 100}`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    if (total?.total > 0) {
+      getClientSecret();
+    }
+  }, [total]);
+
+  console.log("client secret", clientSecret);
 
   return (
     <React.Fragment>
@@ -52,6 +84,12 @@ function Cart() {
             <button>Checkout</button>
           </div>
         </section>
+
+        <form>
+          <CardElement onChange={handleChange} />
+
+          <button onClick={handleFormSubmit}>Pay now</button>
+        </form>
       </Container>
       {/* Services band */}
 
