@@ -8,6 +8,7 @@ import Container from "../layout/Container";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 import axios from "../axios";
+import { showToastMessage } from "../component/ui/ToastMessage";
 
 function Cart() {
   const { cartData, total } = useContext(AppContext);
@@ -39,6 +40,11 @@ function Cart() {
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+        showToastMessage({
+          message: "Your payment has been successfully received.",
+          type: "success",
+          position: "bottom-right",
+        });
       })
       .catch((e) => {
         setSucceeded(false);
@@ -55,9 +61,10 @@ function Cart() {
 
   useEffect(() => {
     const getClientSecret = async () => {
+      const amount = parseFloat(total?.total * 100).toFixed(2);
       const response = await axios({
         method: "POST",
-        url: `/payments/create?total=${total?.total * 100}`,
+        url: `/payments/create?total=${amount}`,
       });
       setClientSecret(response.data.clientSecret);
     };
