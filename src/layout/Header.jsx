@@ -32,10 +32,10 @@ function Header() {
         <img src={Logo} alt="Logo" className="logo" />
         {/* Add Nav Links for the website  */}
         <nav>
-          <a href="/">Home</a>
-          <a href="/shop">Shop</a>
-          <a href="#">About</a>
-          <a href="/contact">Contact</a>
+          <Link to="/">Home</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="#">About</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
         {/* Add CTAs  */}
         <div className="cta">

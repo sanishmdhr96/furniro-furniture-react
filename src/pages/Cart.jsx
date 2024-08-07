@@ -5,24 +5,52 @@ import "../styles/cart.scss";
 import { AppContext } from "../context";
 import SubHeroSection from "../component/common/SubHeroSection";
 import Container from "../layout/Container";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 import axios from "../axios";
 
 function Cart() {
   const { cartData, total } = useContext(AppContext);
 
+  const stripe = useStripe();
+  const elements = useElements();
+
   const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState(false);
 
-  const handleFormSubmit = (event) => {};
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    setProcessing(true);
+
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then(({ paymentIntent }) => {
+        console.log("paymentIntent", paymentIntent);
+
+        //perform database operations here
+
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+      })
+      .catch((e) => {
+        setSucceeded(false);
+        setError(e);
+        setProcessing(false);
+      });
+  };
 
   // detect changes in the card form
   const handleChange = (event) => {
-    console.log(event);
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
   };
 
   useEffect(() => {
@@ -88,7 +116,9 @@ function Cart() {
         <form>
           <CardElement onChange={handleChange} />
 
-          <button onClick={handleFormSubmit}>Pay now</button>
+          <button onClick={handleFormSubmit} disabled={disabled}>
+            Pay now
+          </button>
         </form>
       </Container>
       {/* Services band */}

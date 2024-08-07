@@ -35,16 +35,16 @@ function FormSection() {
     },
   });
 
-  useEffect(() => {
-    console.log(contactPayload);
-    if (contactPayload?.id) {
-      prompt("Thank you for contacting us.");
-    }
+  // useEffect(() => {
+  //   console.log(contactPayload);
+  //   if (contactPayload?.id) {
+  //     prompt("Thank you for contacting us.");
+  //   }
 
-    if (contactErrors) {
-      prompt("Please try again");
-    }
-  }, [contactPayload, contactErrors]);
+  //   if (contactErrors) {
+  //     prompt("Please try again");
+  //   }
+  // }, [contactPayload, contactErrors]);
 
   return (
     <React.Fragment>
