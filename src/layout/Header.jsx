@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "../styles/layout/header.scss";
 
@@ -23,8 +23,11 @@ function Header() {
   //   dispatch(fetchUsername());
   // }, []);
 
-  const { cartData } = useContext(AppContext);
+  const { cartTotalItems, fetchCartData } = useContext(AppContext);
 
+  useEffect(() => {
+    fetchCartData();
+  }, []);
   return (
     <React.Fragment>
       <header>
@@ -43,7 +46,7 @@ function Header() {
           <img src={SearchIcon} alt="Search Icon" />
           <img src={FavIcon} alt="Fav" />
           <Link to={"/cart"} className="cart-link">
-            <img src={CartIcon} alt="Cart" /> <span>{cartData?.length}</span>
+            <img src={CartIcon} alt="Cart" /> <span>{cartTotalItems}</span>
           </Link>
         </div>
       </header>
