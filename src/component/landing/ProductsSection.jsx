@@ -10,25 +10,40 @@ import { useEffectOnce } from "../../lib/useEffectOnce";
 import ProductItem from "../common/products/ProductItem";
 import { fetchProductList } from "../../duck/products/service";
 import ContentLoader from "react-content-loader";
+import { useGetProducts } from "../../hooks/useProducts";
 
-function ProductsSection({ limit = 16 }) {
-  console.log("limit product", limit);
-  const dispatch = useDispatch();
+function ProductsSection({ limit = 20 }) {
+  // THE REDUX WAY
+  // console.log("limit product", limit);
+  // const dispatch = useDispatch();
 
-  const { products, productsLoading } = useSelector((state) => {
-    return {
-      products: state.product.payload,
-      productsLoading: state.product.loading,
-    };
-  });
+  // const { products, productsLoading } = useSelector((state) => {
+  //   return {
+  //     products: state.product.payload,
+  //     productsLoading: state.product.loading,
+  //   };
+  // });
 
-  // useEffectOnce(() => {
-  //   console.log("useeffect 12", limit);
+  // // useEffectOnce(() => {
+  // //   console.log("useeffect 12", limit);
+  // // }, [limit]);
+
+  // useEffect(() => {
+  //   dispatch(fetchProductList({ limit }));
   // }, [limit]);
 
-  useEffect(() => {
-    dispatch(fetchProductList({ limit }));
-  }, [limit]);
+  // REACT QUERY WAY
+
+  // pending, data, error
+  const {
+    isPending: productsLoading,
+    data: products,
+    error: productError,
+  } = useGetProducts({ limit });
+
+  console.log("value", products);
+  console.log("productError", productError);
+
   return (
     <section>
       <Container>
@@ -46,7 +61,7 @@ function ProductsSection({ limit = 16 }) {
               <rect x="470" y="250" rx="0" ry="0" width="200" height="18" />
               <rect x="470" y="275" rx="0" ry="0" width="120" height="20" />
             </ContentLoader>
-          ) : products.length > 0 ? (
+          ) : products?.length > 0 ? (
             products?.map((item) => (
               <ProductItem
                 key={item?.id}
