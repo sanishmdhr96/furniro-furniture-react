@@ -1,0 +1,107 @@
+.checkout-page {
+
+    .container {
+        display: flex;
+        gap: 27px;
+
+        .form-container {
+            width: 608px;
+            padding: 35px 76px;
+
+            h2 {
+                font-size: 36px;
+                font-weight: 500;
+                margin-bottom: 35px;
+            }
+
+            .MuiFormGroup-root {
+                flex-direction: row;
+                gap: 30px;
+            }
+
+            .form-group {
+                flex: 1;
+                margin-bottom: 35px;
+
+                .MuiFormControl-root {
+                    width: 100%;
+                }
+
+                label {
+                    margin-bottom: 22px;
+                }
+            }
+        }
+
+        .checkout-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+            .products-info-row {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+
+                h3 {
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+
+                &--inner {
+                    display: flex;
+                    justify-content: space-between;
+
+                }
+
+                &:nth-child(2) {
+                    font-size: 16px;
+                    display: flex;
+                    flex-direction: column;
+
+
+                    .label {
+                        color: #9f9f9f;
+                        width: 50%;
+                        margin-bottom: 5px;
+                    }
+
+                    .value {
+                        color: #000;
+                    }
+                }
+
+                &:nth-child(3),
+                &:nth-child(4) {
+                    font-size: 16px;
+
+                    .label,
+                    .value {
+                        color: #000;
+                    }
+                }
+
+                &:nth-child(4) {
+
+
+                    .value {
+                        font-size: 24px;
+                        color: #B88E2F;
+                    }
+                }
+
+            }
+
+            button {
+                padding: 17px 102px;
+                border: 1px solid;
+                border-radius: 15px;
+                background: white;
+                font-size: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 40px;
+            }
+        }
+    }
+}
