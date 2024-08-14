@@ -5,7 +5,7 @@ export const fetchProductList = (params) => {
     return (dispatch) => {
         dispatch(ACTIONS.fetchProductsRequest());
 
-        fetch(`https://fakestoreapi.com/products?limit=${params?.limit}`)
+        fetch(`${import.meta.env.VITE_BASE_API}/products?limit=${params?.limit}`)
             .then((data) => data.json())
             .then((response) => {
                 dispatch(ACTIONS.fetchProductsRequestSuccess(response));

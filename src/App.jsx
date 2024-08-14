@@ -10,9 +10,7 @@ import Checkout from "./pages/Checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-const stripeLoad = loadStripe(
-  "pk_test_51Hb0ziErBaMzSa2iUNZjQfnJ3MRPwlF9UoYg0GISzr4vkXQb9KhaQ7c7HsStVflUzHBhl1F19R3sjLpkxNETa42M00mGpeSQfY"
-);
+const stripeLoad = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 function App() {
   return (

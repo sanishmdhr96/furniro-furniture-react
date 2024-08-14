@@ -1,9 +1,8 @@
 
 export const fetchProducts = async ({ limit = 15 }) => {
 
-    console.log('api called')
     try {
-        const response = await fetch(`https://fakestoreapi.com/products?limit=${limit}`)
+        const response = await fetch(`${import.meta.env.VITE_BASE_API}/products?limit=${limit}`)
 
         console.log('response', response)
 

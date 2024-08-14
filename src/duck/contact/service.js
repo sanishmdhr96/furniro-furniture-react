@@ -5,7 +5,7 @@ export const addContact = (value) => {
     return (dispatch) => {
         dispatch(ACTIONS.addContactRequest());
 
-        fetch("https://fakestoreapi.com/users", {
+        fetch(`${import.meta.env.VITE_BASE_API}/users`, {
             method: "POST",
             body: JSON.stringify({
                 email: value?.email,

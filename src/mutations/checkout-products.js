@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 const checkoutProducts = async (value) => {
     console.log(value)
     try {
-        const data = await fetch("https://fakestoreapi.com/users", {
+        const data = await fetch(`${import.meta.env.VITE_BASE_API}/users`, {
             method: "POST",
             body: JSON.stringify({
                 email: "test@yopmail.com",
